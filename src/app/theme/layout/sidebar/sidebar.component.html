@@ -1,0 +1,45 @@
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+  <div class="app-brand demo">
+    <a routerLink="/pages/home" class="app-brand-link" style="text-decoration: none;">
+      <img src="../../../../assets/img/PAiC-BD-logo.png" alt="paic" id="paic-logo">
+    </a>
+    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+      <i class="bx bx-chevron-left bx-sm align-middle"></i>
+    </a>
+  </div>
+
+  <div class="menu-inner-shadow"></div>
+
+  <hr>
+  <ul class="menu-inner py-1">
+    <li *ngFor="let item of sidebarItems; let i = index" [routerLinkActive]="item.submenu.length === 0 ? 'item-selected' : ''" class="menu-item item-decoration ml-1">
+      <a [routerLink]="[item.path]" class="menu-link-personalized" [routerLinkActive]="'item-selected'" (click)="onSubmit()" *ngIf="item.submenu.length === 0">
+        <img [src]="'../../../../assets/svg/'+item.icon+'.svg'" alt="icon.png" class="svg-img" [routerLinkActive]="'hidden'">
+        <img [src]="'../../../../assets/svg/'+item.icon+'-clear.svg'" alt="icon.png" [routerLinkActive]="'show'" class="svg-img hidden" >
+        <label style="margin-left: 10px; font-size: 14px;">{{ item.title }}</label>
+      </a>
+      <div *ngIf="item.submenu.length > 0" class="dropdown ml-10">
+        <a href="javascript:void(0);" class="menu-link-personalized" (click)="toggleDropdown(i)">
+          <img [src]="'../../../../assets/svg/'+item.icon+'.svg'" alt="icon.png" class="svg-img">
+          <img [src]="'../../../../assets/svg/'+item.icon+'-clear.svg'" alt="icon.png" class="svg-img hidden" >
+          <label style="margin-left: 10px; font-size: 14px;">{{ item.title }}</label>
+          <i class="bx bx-chevron-down"></i>
+        </a>
+        <ul *ngIf="item.submenu.length > 0 && item.show" class="submenu" [ngClass]="{'show': item.show}">
+          <li *ngFor="let subitem of item.submenu" class="submenu-item item-decoration" [routerLinkActive]="'item-selected'">
+            <a [routerLink]="[subitem.path]" class="menu-link-personalized" [routerLinkActive]="'item-selected'">
+              <label style="margin-left: 10px; font-size: 14px;">{{ subitem.title }}</label>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+
+  <div class="mt-5 Logout-button">
+
+    <button class="menu-link-personalized" (click)="logout()">
+      <img src="../../../../assets/img/door-check-out-icon.png" alt="close-door" class="img-logout">Logout
+    </button>
+  </div>
+</aside>

@@ -1,0 +1,184 @@
+<div class="modal-content">
+    <div class="modal-header" style="border: none;">
+      <div class="d-flex justify-content-between align-items-center w-100">
+        <h5 class="modal-title text-center mx-auto">{{ title }}</h5>
+        <button type="button" class="btn btn-close-modal" (click)="close()">X</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="form" (ngSubmit)="save()" class="row g-3 d-flex justify-content-center">
+  
+  
+        @if ( isEdit ) {
+        <div class="form-group row mb-2">
+          <label for="network_id" class="col-sm-6 label">Network Id</label>
+          <div class="col-sm-6">
+            <input type="number" class="form-control" id="network_id" formControlName="network_id"
+              [class.is-invalid]="validInput('network_id')">
+            <span class="text-danger mt-2" *ngIf="validInput('network_id')">
+              the field is required
+            </span>
+          </div>
+        </div>
+        }
+  
+        <div class="form-group row mb-2">
+          <label for="name" class="col-sm-6 label">Name</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="name" formControlName="name"
+              [class.is-invalid]="validInput('name')">
+            <span class="text-danger mt-2" *ngIf="validInput('name')">
+              the field is required
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row mb-2">
+          <label for="mno_id" class="col-sm-6 label">MNOs</label>
+          <div class="col-sm-6">
+            <select class="form-select" id="mno_id" formControlName="mno_id">
+              @for (item of mnoList; track $index) {
+              <option value="{{ item.id }}">{{ item.name }}</option>
+              }
+            </select>
+            <span class="text-danger mt-2" *ngIf="validInput('mno_id')">
+              the field is required
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row mb-2">
+          <label for="split_message" class="col-sm-6 label">Split Message</label>
+          <div class="col-sm-6">
+            <input type="checkbox" class="form-check-input check_form" id="split_message" formControlName="split_message"
+              [class.is-invalid]="validInput('split_message')">
+            <span class="text-danger mt-2" *ngIf="validInput('split_message')">
+              the field is required
+            </span>
+          </div>
+        </div>
+
+        <hr>
+        <h6 class="mb-2">SMSC Global Title Configuration</h6>
+
+        <div class="form-group row mb-2">
+          <label for="global_title" class="col-sm-6 label">SMSC Global Tile</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="global_title" formControlName="global_title"
+              [class.is-invalid]="validInput('global_title')">
+            <span class="text-danger mt-2" *ngIf="validInput('global_title')">
+              the field is required
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row mb-2">
+          <label for="global_title_indicator" class="col-sm-6 label">SMSC Global Title Indicator</label>
+          <div class="col-sm-6">
+            <select class="form-select" id="global_title_indicator" formControlName="global_title_indicator">
+              @for (item of global_title_indicator; track $index) {
+              <option value="{{ item.gtIndicatorId }}">{{ item.gtIndicator }}</option>
+              }
+            </select>
+            <span class="text-danger mt-2" *ngIf="validInput('global_title_indicator')">
+              the field is required
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row mb-2">
+          <label for="translation_type" class="col-sm-6 label">SMSC Global Title - Translation Type</label>
+          <div class="col-sm-6">
+            <input type="number" class="form-control" id="translation_type" formControlName="translation_type"
+              [class.is-invalid]="validInput('translation_type')">
+            <span class="text-danger mt-2" *ngIf="validInput('translation_type')">
+              the field is required
+            </span>
+            <span class="text-danger mt-2" *ngIf="validMin('translation_type')">
+              Minimum length is {{ getMin('translation_type') }}
+            </span>
+            <span class="text-danger mt-2" *ngIf="validMax('translation_type')">
+              Maximum length is {{ getMax('translation_type') }}
+            </span>
+            <span class="text-danger mt-2" *ngIf="validPattern('translation_type')">
+              {{ getPatternMessage('translation_type') }}
+            </span>
+          </div>
+        </div>
+
+        <hr>
+        <h6 class="mb-2">Sub System Number Configuration</h6>
+
+        <div class="form-group row mb-2">
+          <label for="smsc_ssn" class="col-sm-6 label">SMSC SubSystem Nunber</label>
+          <div class="col-sm-6">
+            <input type="number" class="form-control" id="smsc_ssn" formControlName="smsc_ssn"
+              [class.is-invalid]="validInput('smsc_ssn')">
+            <span class="text-danger mt-2" *ngIf="validInput('smsc_ssn')">
+              the field is required
+            </span>
+            <span class="text-danger mt-2" *ngIf="validMin('smsc_ssn')">
+              Minimum length is {{ getMin('smsc_ssn') }}
+            </span>
+            <span class="text-danger mt-2" *ngIf="validPattern('smsc_ssn')">
+              {{ getPatternMessage('smsc_ssn') }}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row mb-2">
+          <label for="hlr_ssn" class="col-sm-6 label">HLR subsystem number</label>
+          <div class="col-sm-6">
+            <input type="number" class="form-control" id="hlr_ssn" formControlName="hlr_ssn"
+              [class.is-invalid]="validInput('hlr_ssn')">
+            <span class="text-danger mt-2" *ngIf="validInput('hlr_ssn')">
+              the field is required
+            </span>
+            <span class="text-danger mt-2" *ngIf="validMin('hlr_ssn')">
+              Minimum length is {{ getMin('hlr_ssn') }}
+            </span>
+            <span class="text-danger mt-2" *ngIf="validPattern('hlr_ssn')">
+              {{ getPatternMessage('hlr_ssn') }}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row mb-2">
+          <label for="msc_ssn" class="col-sm-6 label">MSC subsystem number</label>
+          <div class="col-sm-6">
+            <input type="number" class="form-control" id="msc_ssn" formControlName="msc_ssn"
+              [class.is-invalid]="validInput('msc_ssn')">
+            <span class="text-danger mt-2" *ngIf="validInput('msc_ssn')">
+              the field is required
+            </span>
+            <span class="text-danger mt-2" *ngIf="validMin('msc_ssn')">
+              Minimum length is {{ getMin('msc_ssn') }}
+            </span>
+            <span class="text-danger mt-2" *ngIf="validPattern('msc_ssn')">
+              {{ getPatternMessage('msc_ssn') }}
+            </span>
+          </div>
+        </div>
+
+        <hr>
+        <h6 class="mb-2">SS7 Version Configuration</h6>
+
+        <div class="form-group row mb-2">
+          <label for="map_version" class="col-sm-6 label">MAP version supported</label>
+          <div class="col-sm-6">
+            <select class="form-select" id="map_version" formControlName="map_version">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <span class="text-danger mt-2" *ngIf="validInput('map_version')">
+              the field is required
+            </span>
+          </div>
+        </div>
+        
+        <button class="btn btn-red" style="width: 60%;" [disabled]="form.invalid">Save</button>
+      
+      </form>
+    </div>
+  </div>

@@ -1,0 +1,7 @@
+services:
+  frontend:
+    image: smsc-management-fe-frontend:latest
+    ports:
+      - "80:80"
+    environment:
+      - BACKEND_IP=192.168.100.20:9087
