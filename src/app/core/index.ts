@@ -17,6 +17,7 @@ export * from './interfaces/Setting';
 export * from './interfaces/CreditBalance';
 export * from './interfaces/GatewaySs7';
 export * from './interfaces/Report';
+export * from './interfaces/Broadcast';
 
 // export services 
 export * from './services/catalog.service';
@@ -36,6 +37,7 @@ export * from './services/sccp.service';
 export * from './services/tcap-map.service';
 export * from './services/report.service';
 export * from './services/data-table-config.service';
+export * from './services/broadcast.service';
 
 // export utils
 export * from './utils/alert.service';

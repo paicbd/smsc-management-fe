@@ -88,6 +88,15 @@ export const ROUTES: RouteInfo[] = [
     ],
     show: false,
   },
+  {
+    path: "/pages/broadcast",
+    title: "Broadcast SMS",
+    icon: "broadcast",
+    groupTitle: false,
+    role: ["All"],
+    submenu: [],
+    show: false,
+  },
   // {
   //   path: "/pages/reports",
   //   title: "Reports",

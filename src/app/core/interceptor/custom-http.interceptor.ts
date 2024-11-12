@@ -17,14 +17,7 @@ export class CustomHttpInterceptor implements HttpInterceptor {
     if (token) {
       request = request.clone({
         setHeaders: {
-          'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`
-        }
-      });
-    } else {
-      request = request.clone({
-        setHeaders: {
-          'Content-Type': 'application/json'
         }
       });
     }

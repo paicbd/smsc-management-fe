@@ -30,8 +30,8 @@ export class ServiceProvidersService {
         return this.connectionService.send(`service-provider/${id}`, 'delete');
     }
 
-    async getCreditBalance(system_id: string): Promise<ResponseI> {
-        return this.connectionService.send(`balance-credit/rating`, 'post', { system_id });
+    async getCreditBalance(network_id: string): Promise<ResponseI> {
+        return this.connectionService.send(`balance-credit/rating`, 'post', { network_id });
     }
 
     async setCreditBalance(network_id: number, credit: any): Promise<ResponseI> {

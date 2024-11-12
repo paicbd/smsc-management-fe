@@ -111,7 +111,7 @@ export class ServiceProvidersComponent implements OnInit {
   }
 
   async showCreditBalance(serviceProvider : ServiceProvider) {
-    let resp = await this.serviceProvidersService.getCreditBalance(serviceProvider.system_id);
+    let resp = await this.serviceProvidersService.getCreditBalance(String(serviceProvider.network_id));
     let { status, message, comment } = resp;
     if (status == 200) {
       this.creditBalance = resp.data;
@@ -120,7 +120,7 @@ export class ServiceProvidersComponent implements OnInit {
     } else {
       this.alertsvr.showAlert(2, 'Warning', comment);
     }
-    
+
   }
 
   editData(providerEdit: any, disableControls?:boolean) {

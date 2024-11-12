@@ -102,12 +102,10 @@ export class Ss7Component implements OnInit, OnDestroy {
   async changeStatus() {
     try {
       let menssage = '';
-      let refreshSetting=false;
       switch (this.itemOption) {
         case 1:
           menssage = 'Initialized Gateway';
           this.ss7.enabled = 1;
-          refreshSetting = true;
           break;
         case 2:
           menssage = 'Detained Gateway';
@@ -116,14 +114,13 @@ export class Ss7Component implements OnInit, OnDestroy {
         default:
           menssage = 'Delete Gateway';
           this.ss7.enabled = 2;
-          refreshSetting=false;
           break;
       }
-      let resp =  refreshSetting ? await this.gatewaySs7Service.refreshSettingSs7(this.ss7.network_id): await this.gatewaySs7Service.updateGatewaySs7(this.ss7);
+      let resp =  await this.gatewaySs7Service.updateGatewaySs7(this.ss7);
       if (resp.status == 200) {
         this.alertSvc.showAlert(1, menssage, resp.comment);
       } else {
-        this.alertSvc.showAlert(2, 'Could not change gateway status', 'Warning');
+        this.alertSvc.showAlert(2, resp.comment, 'Warning');
       }
     } catch (error) {
       this.alertSvc.showAlert(3, 'Server error', 'Error');

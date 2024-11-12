@@ -30,9 +30,8 @@ export class MnosComponent implements OnInit {
   public run: boolean = false;
 
   constructor(
-    private serviceMno: MnosService,
-    private alertsvr: AlertService,
     private mnoService: MnosService,
+    private alertsvr: AlertService,
     private dtConfigService: DataTableConfigService,
   ) {}
 
@@ -44,7 +43,7 @@ export class MnosComponent implements OnInit {
   }
 
   async loadMnos() {
-    this.response = await this.serviceMno.getMnos();
+    this.response = await this.mnoService.getMnos();
     if (this.response.status == 200) {
       this.data = this.response.data;
       this.data.sort((a, b) => b.id - a.id);
