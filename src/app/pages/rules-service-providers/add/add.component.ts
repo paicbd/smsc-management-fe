@@ -259,6 +259,7 @@ export class AddComponent implements OnInit {
       network_id: this.formTarget.get('network_id')?.value,
       gateway_name: network?.name,
     });
+
     this.initializeTarget();
     let priority = this.destinationList.length + 1;
     this.formTarget.get('priority')?.setValue(priority);
@@ -282,6 +283,7 @@ export class AddComponent implements OnInit {
 
   close(): void {
     this.destinationList = [];
+    this.destinationDelete = [];
     this.initializeTarget();
     this.initializeTarget();
     this.closeModal.emit(true);
@@ -386,6 +388,8 @@ export class AddComponent implements OnInit {
       }
     }
 
+    this.destinationList = [];
+    this.destinationDelete = [];
     if (resp.status == 200) {
       this.close();
     }

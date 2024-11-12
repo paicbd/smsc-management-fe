@@ -101,7 +101,7 @@ export class AddAppServerComponent implements OnInit,OnDestroy {
       functionality: formData.functionality,
       exchange: formData.exchange,
       routing_context: parseInt(formData.routing_context) || 0,
-      network_appearance: parseInt(formData.network_appearance) || 0,
+      network_appearance: parseInt(formData.network_appearance) || null,
       traffic_mode_id: formData.traffic_mode || '',
       minimum_asp_for_loadshare: formData.minuimum_asp_for_loadshare || 0,
       asp_factories: formData.aspList.map((asp: { id: any; }) => asp.id)
@@ -175,8 +175,8 @@ export class AddAppServerComponent implements OnInit,OnDestroy {
         exchange: data.exchange ?? '',
         functionality: data.functionality ?? '',
         routing_context: data.routing_context ?? '',
-        network_appearance: data.network_appearance ?? '',
-        traffic_mode: data.traffic_mode_id ?? '', // Asegúrate de que los nombres coincidan
+        network_appearance: data.network_appearance ?? null,
+        traffic_mode: data.traffic_mode_id ?? '',
         minuimum_asp_for_loadshare: data.minimum_asp_for_loadshare ?? 0,
       });
       const aspFactoryIds = data.asp_factories;

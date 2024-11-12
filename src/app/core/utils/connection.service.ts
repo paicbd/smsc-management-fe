@@ -1,37 +1,40 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { ResponseI } from '../interfaces/Response';
-import { Observable } from 'rxjs';
 import { IBaseRequest } from '../services/http/requests/base.request';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConnectionService {
   private apiUrl: string = environment.APIUrl;
-  private dataUrl = 'assets/json';
 
   constructor(private http: HttpClient) { }
 
   send(path: string, type: string, ...params: any[]): Promise<ResponseI> {
     const url = `${this.apiUrl}/${path}`;
     let request: any;
+    let headers = new HttpHeaders();
+
+    if (!(params[0] instanceof FormData)) {
+      headers = headers.set('Content-Type', 'application/json');
+    }
+
     switch (type) {
       case 'get':
         request = this.http.get<any>(url);
         break;
       case 'post':
-        request = this.http.post<any>(url, params[0]);
+      case 'upload':
+        request = this.http.post<any>(url, params[0], { headers });
         break;
       case 'put':
-        request = this.http.put<any>(url, params[0]);
+        request = this.http.put<any>(url, params[0], { headers });  
         break;
       case 'delete':
         request = this.http.delete<any>(url);
-        break;
-      case 'upload':
-        request = this.http.post<any>(url, params[0]);
         break;
       default:
         request = this.http.get<any>(url);
@@ -58,4 +61,8 @@ export class ConnectionService {
     return this.send(path, 'put', req.toJson());
   }
 
+  downloadFile(path: string): void {
+    const url = `${this.apiUrl}/${path}`;
+    window.open(url, '_blank');
+  }
 }
