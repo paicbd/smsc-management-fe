@@ -79,7 +79,7 @@ export class AddSmppComponent implements OnInit {
   }
 
   initializeForm(): void {
-    let request_dlr: boolean = this.defaultValues.request_dlr === 'true' ? true : false;
+    let request_dlr: number = 2; //Transparent as default value
     let split_message: boolean = this.defaultValues.split_message === 'true' ? true : false;
 
     let maxLengthSystemId = environment.generalSettings.general.max_system_id_length || 15;
@@ -284,13 +284,6 @@ export class AddSmppComponent implements OnInit {
       }
     }
 
-    if (data.bind_type === 'TRANSMITTER') {
-      this.form.get('request_dlr')?.setValue(false);
-      this.form.get('request_dlr')?.disable();
-    } else {
-      this.form.get('request_dlr')?.enable();
-    }
-
     if (disableControls) {
       this.form.get('name')?.disable();
       this.form.get('system_id')?.disable();
@@ -361,13 +354,6 @@ export class AddSmppComponent implements OnInit {
 
   changeBindTypes(event: any) {
     let value = event.target.value;
-
-    if (value === 'TRANSMITTER') {
-      this.form.get('request_dlr')?.setValue(false);
-      this.form.get('request_dlr')?.disable();
-    } else {
-      this.form.get('request_dlr')?.enable();
-    }
   }
 
   close(): void {

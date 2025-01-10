@@ -8,6 +8,7 @@ export interface Broadcast {
     status: string;
     created_at: string;
     updated_at: string;
+    request_dlr: boolean;
 }
 
 export interface Statistic {

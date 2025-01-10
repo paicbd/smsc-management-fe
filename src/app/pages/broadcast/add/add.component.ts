@@ -42,7 +42,8 @@ export class AddComponent implements OnInit{
     file_id: 0,
     status: '',
     created_at: '',
-    updated_at: ''
+    updated_at: '',
+    request_dlr: false
   };
   statistics: Statistic = {
     total_message: 0,
@@ -83,7 +84,8 @@ export class AddComponent implements OnInit{
       name: ['', [Validators.required]],
       network_id: [Validators.required],
       description: [''],
-      status: [false]
+      status: [false],
+      request_dlr: [false]
     });
   }
 
@@ -235,7 +237,8 @@ export class AddComponent implements OnInit{
         name: this.broadcast.name,
         network_id: this.broadcast.network_id,
         description: this.broadcast.description,
-        status: this.broadcast.status
+        status: this.broadcast.status,
+        request_dlr: this.broadcast.request_dlr
       });
 
       const fileNameElement = document.getElementById('file-name');
