@@ -281,11 +281,14 @@
         </div>
       </div>
 
-      <div class="form-group row mb-2" *ngIf="!showOptHttp">
+      <div class="form-group row mb-2">
         <label for="request_dlr" class="col-sm-6 label">Request DLR</label>
         <div class="col-sm-6">
-          <input type="checkbox" class="form-check-input check_form" id="request_dlr" formControlName="request_dlr"
-            [class.is-invalid]="validInput('request_dlr')">
+          <select class="form-select" id="request_dlr" name="request_dlr" formControlName="request_dlr">
+            <option value="2">Transparent</option>
+            <option value="1">True</option>
+            <option value="0">False</option>
+          </select>
           <span class="text-danger mt-2" *ngIf="validInput('request_dlr')">
             the field is required
           </span>
@@ -469,6 +472,8 @@
           </span>
         </div>
       </div>
+
+      
 
       <button class="btn btn-red" id="btn_save" style="width: 60%;" [disabled]="form.invalid || saveDisabled">Save</button>
 

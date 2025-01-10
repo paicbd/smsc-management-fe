@@ -97,7 +97,6 @@ export class AddComponent implements OnInit {
   }
 
   initializeForm(): void {
-    let request_dlr: boolean = this.defaultValues.request_dlr === 'true' ? true : false;
     let maxLengthSystemId = environment.generalSettings.general.max_system_id_length || 15;
     let maxLengthPassword = environment.generalSettings.general.max_password_length || 9;
 
@@ -121,7 +120,6 @@ export class AddComponent implements OnInit {
       enabled: [this.defaultValues.enabled, [Validators.required]],
       enquire_link_period: [this.defaultValues.enquire_link_period, [Validators.required, Validators.pattern('^[0-9]*$')]],
       pdu_timeout: [this.defaultValues.pdu_timeout, [Validators.required, Validators.pattern('^[0-9]*$')]],
-      request_dlr: [request_dlr, [Validators.required]],
       contact_name: ['', [Validators.pattern('^[A-Za-z0-9 ]*$')]],
       email: ['', [Validators.pattern(this.patternEmail)]],
       phone_number: [ '', [Validators.pattern('^[0-9]*$')]],
@@ -282,7 +280,6 @@ export class AddComponent implements OnInit {
         enabled: (data.enabled == null || data.enabled == undefined) ? false : data.enabled,
         enquire_link_period: (data.enquire_link_period == null || data.enquire_link_period == undefined) ? '' : data.enquire_link_period,
         pdu_timeout: (data.pdu_timeout == null || data.pdu_timeout == undefined) ? '' : data.pdu_timeout,
-        request_dlr: (data.request_dlr == null || data.request_dlr == undefined) ? false : data.request_dlr,
         contact_name: (data.contact_name == null || data.contact_name == undefined) ? this.defaultValues.contact_name : data.contact_name,
         email: (data.email == null || data.email == undefined) ? this.defaultValues.email : data.email,
         phone_number: (data.phone_number == null || data.phone_number == undefined) ? this.defaultValues.phone_number : data.phone_number,
@@ -338,13 +335,6 @@ export class AddComponent implements OnInit {
         this.form.get('header_security_name')?.clearValidators();
       }
 
-      if (data.bind_type === 'TRANSMITTER') {
-        this.form.get('request_dlr')?.setValue(false);
-        this.form.get('request_dlr')?.disable();
-      } else {
-        this.form.get('request_dlr')?.enable();
-      }
-
     }
     if (disableControls) { 
       this.form.get('name')?.disable();
@@ -362,7 +352,6 @@ export class AddComponent implements OnInit {
       this.form.get('validity')?.disable();
       this.form.get('enquire_link_period')?.disable();
       this.form.get('pdu_timeout')?.disable();
-      this.form.get('request_dlr')?.disable();
       this.form.get('contact_name')?.disable();
       this.form.get('email')?.disable();
       this.form.get('phone_number')?.disable();
@@ -468,7 +457,6 @@ export class AddComponent implements OnInit {
       enabled: '',
       enquire_link_period: '',
       pdu_timeout: '',
-      request_dlr: '',
       contact_name: '',
       email: '',
       phone_number: '',
@@ -512,13 +500,6 @@ export class AddComponent implements OnInit {
 
   changeBindTypes(event: any) {
     let value = event.target.value;
-
-    if (value === 'TRANSMITTER') {
-      this.form.get('request_dlr')?.setValue(false);
-      this.form.get('request_dlr')?.disable();
-    } else {
-      this.form.get('request_dlr')?.enable();
-    }
   }
 
   onSelectAuthenticationTypes(event: any) {

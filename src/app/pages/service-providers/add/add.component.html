@@ -272,17 +272,6 @@
           </div>
         </div>
 
-        <div class="form-group row mb-2" *ngIf="!showOptionsHttp">
-          <label for="request_dlr" class="col-sm-6 label">Request DLR</label>
-          <div class="col-sm-6">
-            <input type="checkbox" class="form-check-input check_form" id="request_dlr" name="request_dlr" formControlName="request_dlr"
-              [class.is-invalid]="validInput('request_dlr')">
-            <span class="text-danger mt-2" *ngIf="validInput('request_dlr')">
-              the field is required
-            </span>
-          </div>
-        </div>
-
         <hr class="mt-2 mb-2">
 
         <div class="form-group row mb-2">
