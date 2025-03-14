@@ -38,6 +38,8 @@ export interface RoutingRules {
     drop_temp_failure: boolean;
     network_id_temp_failure?: number;
     is_sri_response?: boolean;
+    regex_short_message: string;
+    new_short_message: string;
 }
 
 export interface Network {

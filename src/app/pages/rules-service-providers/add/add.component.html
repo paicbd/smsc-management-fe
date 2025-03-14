@@ -41,83 +41,103 @@
           <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="collapseOne" [ngClass]="{ 'show': accordionA }">
             <div class="accordion-body">
               <div class="row mt-2">
-                <div class="col-sm-4">
-                  <div class="form-group row mb-2">
-                    <label for="regex_source_addr" class="col-sm-6 label">Regex Source Address</label>
+                <div class="col-sm-8">
+                  <div class="row">
                     <div class="col-sm-6">
-                      <input type="text" class="form-control" id="regex_source_addr" formControlName="regex_source_addr"
-                        [class.is-invalid]="validInput('regex_source_addr')">
-                      <span class="text-danger mt-2" *ngIf="validInput('regex_source_addr')">
-                        the field is required
-                      </span>
+                      <div class="form-group row mb-2">
+                        <label for="regex_source_addr" class="col-sm-6 label">Regex Source Address</label>
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control" id="regex_source_addr" formControlName="regex_source_addr"
+                            [class.is-invalid]="validInput('regex_source_addr')">
+                          <span class="text-danger mt-2" *ngIf="validInput('regex_source_addr')">
+                            the field is required
+                          </span>
+                        </div>
+                      </div>
+                
+                      <div class="form-group row mb-2">
+                        <label for="regex_source_addr_ton" class="col-sm-6 label">Regex Source Address TON</label>
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control" id="regex_source_addr_ton" formControlName="regex_source_addr_ton"
+                            [class.is-invalid]="validInput('regex_source_addr_ton')">
+                          <span class="text-danger mt-2" *ngIf="validInput('regex_source_addr_ton')">
+                            the field is required
+                          </span>
+                          <span class="text-danger mt-2" *ngIf="validPattern('regex_source_addr_ton')">
+                            {{ getPatternMessage('regex_source_addr_ton') }}
+                          </span>
+                        </div>
+                      </div>
+                
+                      <div class="form-group row mb-2">
+                        <label for="regex_source_addr_npi" class="col-sm-6 label">Regex Source Address NPI</label>
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control" id="regex_source_addr_npi" formControlName="regex_source_addr_npi"
+                            [class.is-invalid]="validInput('regex_source_addr_npi')">
+                          <span class="text-danger mt-2" *ngIf="validInput('regex_source_addr_npi')">
+                            the field is required
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="col-sm-6">
+                      <div class="form-group row mb-2">
+                        <label for="regex_destination_addr" class="col-sm-6 label">Regex Destination Address</label>
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control" id="regex_destination_addr" formControlName="regex_destination_addr"
+                            [class.is-invalid]="validInput('regex_destination_addr')">
+                          <span class="text-danger mt-2" *ngIf="validInput('regex_destination_addr')">
+                            the field is required
+                          </span>
+                        </div>
+                      </div>
+                
+                      <div class="form-group row mb-2">
+                        <label for="regex_dest_addr_ton" class="col-sm-6 label">Regex Destination Address TON</label>
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control" id="regex_dest_addr_ton" formControlName="regex_dest_addr_ton"
+                            [class.is-invalid]="validInput('regex_dest_addr_ton')">
+                          <span class="text-danger mt-2" *ngIf="validInput('regex_dest_addr_ton')">
+                            the field is required
+                          </span>
+                          <span class="text-danger mt-2" *ngIf="validPattern('regex_dest_addr_ton')">
+                            {{ getPatternMessage('regex_dest_addr_ton') }}
+                          </span>
+                        </div>
+                      </div>
+                
+                      <div class="form-group row mb-2">
+                        <label for="regex_dest_addr_npi" class="col-sm-6 label">Regex Destination Address NPI</label>
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control" id="regex_dest_addr_npi" formControlName="regex_dest_addr_npi"
+                            [class.is-invalid]="validInput('regex_dest_addr_npi')">
+                          <span class="text-danger mt-2" *ngIf="validInput('regex_dest_addr_npi')">
+                            the field is required
+                          </span>
+                          <span class="text-danger mt-2" *ngIf="validPattern('regex_dest_addr_npi')">
+                            {{ getPatternMessage('regex_dest_addr_npi') }}
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-            
+
                   <div class="form-group row mb-2">
-                    <label for="regex_source_addr_ton" class="col-sm-6 label">Regex Source Address TON</label>
-                    <div class="col-sm-6">
-                      <input type="text" class="form-control" id="regex_source_addr_ton" formControlName="regex_source_addr_ton"
-                        [class.is-invalid]="validInput('regex_source_addr_ton')">
-                      <span class="text-danger mt-2" *ngIf="validInput('regex_source_addr_ton')">
+                    <label for="regex_short_message" class="col-sm-3 label">Regex Short Message</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="regex_short_message" formControlName="regex_short_message"
+                        [class.is-invalid]="validInput('regex_short_message')">
+                      <span class="text-danger mt-2" *ngIf="validInput('regex_short_message')">
                         the field is required
                       </span>
-                      <span class="text-danger mt-2" *ngIf="validPattern('regex_source_addr_ton')">
-                        {{ getPatternMessage('regex_source_addr_ton') }}
-                      </span>
-                    </div>
-                  </div>
-            
-                  <div class="form-group row mb-2">
-                    <label for="regex_source_addr_npi" class="col-sm-6 label">Regex Source Address NPI</label>
-                    <div class="col-sm-6">
-                      <input type="text" class="form-control" id="regex_source_addr_npi" formControlName="regex_source_addr_npi"
-                        [class.is-invalid]="validInput('regex_source_addr_npi')">
-                      <span class="text-danger mt-2" *ngIf="validInput('regex_source_addr_npi')">
-                        the field is required
+                      <span class="text-danger mt-2" *ngIf="validPattern('regex_short_message')">
+                        Regex is invalid
                       </span>
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-4">
-                  <div class="form-group row mb-2">
-                    <label for="regex_destination_addr" class="col-sm-6 label">Regex Destination Address</label>
-                    <div class="col-sm-6">
-                      <input type="text" class="form-control" id="regex_destination_addr" formControlName="regex_destination_addr"
-                        [class.is-invalid]="validInput('regex_destination_addr')">
-                      <span class="text-danger mt-2" *ngIf="validInput('regex_destination_addr')">
-                        the field is required
-                      </span>
-                    </div>
-                  </div>
-            
-                  <div class="form-group row mb-2">
-                    <label for="regex_dest_addr_ton" class="col-sm-6 label">Regex Destination Address TON</label>
-                    <div class="col-sm-6">
-                      <input type="text" class="form-control" id="regex_dest_addr_ton" formControlName="regex_dest_addr_ton"
-                        [class.is-invalid]="validInput('regex_dest_addr_ton')">
-                      <span class="text-danger mt-2" *ngIf="validInput('regex_dest_addr_ton')">
-                        the field is required
-                      </span>
-                      <span class="text-danger mt-2" *ngIf="validPattern('regex_dest_addr_ton')">
-                        {{ getPatternMessage('regex_dest_addr_ton') }}
-                      </span>
-                    </div>
-                  </div>
-            
-                  <div class="form-group row mb-2">
-                    <label for="regex_dest_addr_npi" class="col-sm-6 label">Regex Destination Address NPI</label>
-                    <div class="col-sm-6">
-                      <input type="text" class="form-control" id="regex_dest_addr_npi" formControlName="regex_dest_addr_npi"
-                        [class.is-invalid]="validInput('regex_dest_addr_npi')">
-                      <span class="text-danger mt-2" *ngIf="validInput('regex_dest_addr_npi')">
-                        the field is required
-                      </span>
-                      <span class="text-danger mt-2" *ngIf="validPattern('regex_dest_addr_npi')">
-                        {{ getPatternMessage('regex_dest_addr_npi') }}
-                      </span>
-                    </div>
-                  </div>
-                </div>
+
                 <div class="col-sm-4">
                   <div class="form-group row mb-2">
                     <label for="regex_imsi_digits_mask" class="col-sm-6 label">Regex IMSI Digits Mask</label>
@@ -129,7 +149,7 @@
                       </span>
                     </div>
                   </div>
-            
+
                   <div class="form-group row mb-2">
                     <label for="regex_network_node_number" class="col-sm-6 label">Regex Network Node Number</label>
                     <div class="col-sm-6">
@@ -168,7 +188,6 @@
                       </span>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -186,147 +205,157 @@
             <div class="accordion-body">
 
               <div class="row mt-2">
-                <div class="col-sm-4">
-                  <div class="form-group row mb-2">
-                    <label for="new_source_addr" class="col-sm-6 label">New Source Address</label>
+                <div class="col-sm-8">
+                  <div class="row">
                     <div class="col-sm-6">
-                      <input type="text" class="form-control" id="new_source_addr" formControlName="new_source_addr"
-                        [class.is-invalid]="validInput('new_source_addr')">
-                      <span class="text-danger mt-2" *ngIf="validInput('new_source_addr')">
-                        the field is required
-                      </span>
+                      <div class="form-group row mb-2">
+                        <label for="new_source_addr" class="col-sm-6 label">New Source Address</label>
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control" id="new_source_addr" formControlName="new_source_addr"
+                            [class.is-invalid]="validInput('new_source_addr')">
+                          <span class="text-danger mt-2" *ngIf="validInput('new_source_addr')">
+                            the field is required
+                          </span>
+                        </div>
+                      </div>
+    
+                      <div class="form-group row mb-2">
+                        <label for="remove_source_addr_prefix" class="col-sm-6 label">Remove Source Address Prefix</label>
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control" id="remove_source_addr_prefix" formControlName="remove_source_addr_prefix"
+                            [class.is-invalid]="validInput('remove_source_addr_prefix')">
+                          <span class="text-danger mt-2" *ngIf="validInput('remove_source_addr_prefix')">
+                            the field is required
+                          </span>
+                          <span class="text-danger mt-2" *ngIf="validPattern('remove_source_addr_prefix')">
+                            {{ getPatternMessage('remove_source_addr_prefix') }}
+                          </span>
+                        </div>
+                      </div>
+    
+                      <div class="form-group row mb-2">
+                        <label for="add_source_addr_prefix" class="col-sm-6 label">Add Source Address Prefix</label>
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control" id="add_source_addr_prefix" formControlName="add_source_addr_prefix"
+                            [class.is-invalid]="validInput('add_source_addr_prefix')">
+                          <span class="text-danger mt-2" *ngIf="validInput('add_source_addr_prefix')">
+                            the field is required
+                          </span>
+                          <span class="text-danger mt-2" *ngIf="validPattern('add_source_addr_prefix')">
+                            {{ getPatternMessage('add_source_addr_prefix') }}
+                          </span>
+                        </div>
+                      </div>
+                
+                      <div class="form-group row mb-2">
+                        <label for="new_source_addr_ton" class="col-sm-6 label">New Source Address TON</label>
+                        <div class="col-sm-6">
+                          <select class="form-select" id="new_source_addr_ton" formControlName="new_source_addr_ton">
+                            @for (item of newSourceAddressTonList; track $index) {
+                            <option value="{{ item.id }}">{{ item.description }}</option>
+                            }
+                          </select>
+                          <span class="text-danger mt-2" *ngIf="validInput('new_source_addr_ton')">
+                            the field is required
+                          </span>
+                        </div>
+                      </div>
+                
+                      <div class="form-group row mb-2">
+                        <label for="new_source_addr_npi" class="col-sm-6 label">New Source Address NPI</label>
+                        <div class="col-sm-6">
+                          <select class="form-select" id="new_source_addr_npi" formControlName="new_source_addr_npi">
+                            @for (item of newSourceAddressNpiList; track $index) {
+                            <option value="{{ item.id }}">{{ item.description }}</option>
+                            }
+                          </select>
+                          <span class="text-danger mt-2" *ngIf="validInput('new_source_addr_npi')">
+                            the field is required
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="form-group row mb-2">
+                        <label for="new_destination_addr" class="col-sm-6 label">New Destination Address</label>
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control" id="new_destination_addr" formControlName="new_destination_addr"
+                            [class.is-invalid]="validInput('new_destination_addr')">
+                          <span class="text-danger mt-2" *ngIf="validInput('new_destination_addr')">
+                            the field is required
+                          </span>
+                        </div>
+                      </div>
+    
+                      <div class="form-group row mb-2">
+                        <label for="remove_dest_addr_prefix" class="col-sm-6 label">Remove Destination Address Prefix</label>
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control" id="remove_dest_addr_prefix" formControlName="remove_dest_addr_prefix"
+                            [class.is-invalid]="validInput('remove_dest_addr_prefix')">
+                          <span class="text-danger mt-2" *ngIf="validInput('remove_dest_addr_prefix')">
+                            the field is required
+                          </span>
+                          <span class="text-danger mt-2" *ngIf="validPattern('remove_dest_addr_prefix')">
+                            {{ getPatternMessage('remove_dest_addr_prefix') }}
+                          </span>
+                        </div>
+                      </div>
+    
+                      <div class="form-group row mb-2">
+                        <label for="add_dest_addr_prefix" class="col-sm-6 label">Add Destination Address Prefix</label>
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control" id="add_dest_addr_prefix" formControlName="add_dest_addr_prefix"
+                            [class.is-invalid]="validInput('add_dest_addr_prefix')">
+                          <span class="text-danger mt-2" *ngIf="validInput('add_dest_addr_prefix')">
+                            the field is required
+                          </span>
+                          <span class="text-danger mt-2" *ngIf="validPattern('add_dest_addr_prefix')">
+                            {{ getPatternMessage('add_dest_addr_prefix') }}
+                          </span>
+                        </div>
+                      </div>
+                
+                      <div class="form-group row mb-2">
+                        <label for="new_dest_addr_ton" class="col-sm-6 label">New Destination Address TON</label>
+                        <div class="col-sm-6">
+                          <select class="form-select" id="new_dest_addr_ton" formControlName="new_dest_addr_ton">
+                            @for (item of newDestAddrTonList; track $index) {
+                            <option value="{{ item.id }}">{{ item.description }}</option>
+                            }
+                          </select>
+                          <span class="text-danger mt-2" *ngIf="validInput('new_dest_addr_ton')">
+                            the field is required
+                          </span>
+                        </div>
+                      </div>
+                
+                      <div class="form-group row mb-2">
+                        <label for="new_dest_addr_npi" class="col-sm-6 label">New Destination Address NPI</label>
+                        <div class="col-sm-6">
+                          <select class="form-select" id="new_dest_addr_npi" formControlName="new_dest_addr_npi">
+                            @for (item of newDestAddrNpiList; track $index) {
+                            <option value="{{ item.id }}">{{ item.description }}</option>
+                            }
+                          </select>
+                          <span class="text-danger mt-2" *ngIf="validInput('new_dest_addr_npi')">
+                            the field is required
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
                   <div class="form-group row mb-2">
-                    <label for="remove_source_addr_prefix" class="col-sm-6 label">Remove Source Address Prefix</label>
-                    <div class="col-sm-6">
-                      <input type="text" class="form-control" id="remove_source_addr_prefix" formControlName="remove_source_addr_prefix"
-                        [class.is-invalid]="validInput('remove_source_addr_prefix')">
-                      <span class="text-danger mt-2" *ngIf="validInput('remove_source_addr_prefix')">
-                        the field is required
-                      </span>
-                      <span class="text-danger mt-2" *ngIf="validPattern('remove_source_addr_prefix')">
-                        {{ getPatternMessage('remove_source_addr_prefix') }}
-                      </span>
+                    <label for="new_short_message" class="col-sm-3 label">New Short Message</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="new_short_message" formControlName="new_short_message"
+                        [class.is-invalid]="validInput('new_short_message')">
                     </div>
                   </div>
-
-                  <div class="form-group row mb-2">
-                    <label for="add_source_addr_prefix" class="col-sm-6 label">Add Source Address Prefix</label>
-                    <div class="col-sm-6">
-                      <input type="text" class="form-control" id="add_source_addr_prefix" formControlName="add_source_addr_prefix"
-                        [class.is-invalid]="validInput('add_source_addr_prefix')">
-                      <span class="text-danger mt-2" *ngIf="validInput('add_source_addr_prefix')">
-                        the field is required
-                      </span>
-                      <span class="text-danger mt-2" *ngIf="validPattern('add_source_addr_prefix')">
-                        {{ getPatternMessage('add_source_addr_prefix') }}
-                      </span>
-                    </div>
-                  </div>
-            
-                  <div class="form-group row mb-2">
-                    <label for="new_source_addr_ton" class="col-sm-6 label">New Source Address TON</label>
-                    <div class="col-sm-6">
-                      <select class="form-select" id="new_source_addr_ton" formControlName="new_source_addr_ton">
-                        @for (item of newSourceAddressTonList; track $index) {
-                        <option value="{{ item.id }}">{{ item.description }}</option>
-                        }
-                      </select>
-                      <span class="text-danger mt-2" *ngIf="validInput('new_source_addr_ton')">
-                        the field is required
-                      </span>
-                    </div>
-                  </div>
-            
-                  <div class="form-group row mb-2">
-                    <label for="new_source_addr_npi" class="col-sm-6 label">New Source Address NPI</label>
-                    <div class="col-sm-6">
-                      <select class="form-select" id="new_source_addr_npi" formControlName="new_source_addr_npi">
-                        @for (item of newSourceAddressNpiList; track $index) {
-                        <option value="{{ item.id }}">{{ item.description }}</option>
-                        }
-                      </select>
-                      <span class="text-danger mt-2" *ngIf="validInput('new_source_addr_npi')">
-                        the field is required
-                      </span>
-                    </div>
-                  </div>
-            
                 </div>
+                
                 <div class="col-sm-4">
-                  
-                  <div class="form-group row mb-2">
-                    <label for="new_destination_addr" class="col-sm-6 label">New Destination Address</label>
-                    <div class="col-sm-6">
-                      <input type="text" class="form-control" id="new_destination_addr" formControlName="new_destination_addr"
-                        [class.is-invalid]="validInput('new_destination_addr')">
-                      <span class="text-danger mt-2" *ngIf="validInput('new_destination_addr')">
-                        the field is required
-                      </span>
-                    </div>
-                  </div>
-
-                  <div class="form-group row mb-2">
-                    <label for="remove_dest_addr_prefix" class="col-sm-6 label">Remove Destination Address Prefix</label>
-                    <div class="col-sm-6">
-                      <input type="text" class="form-control" id="remove_dest_addr_prefix" formControlName="remove_dest_addr_prefix"
-                        [class.is-invalid]="validInput('remove_dest_addr_prefix')">
-                      <span class="text-danger mt-2" *ngIf="validInput('remove_dest_addr_prefix')">
-                        the field is required
-                      </span>
-                      <span class="text-danger mt-2" *ngIf="validPattern('remove_dest_addr_prefix')">
-                        {{ getPatternMessage('remove_dest_addr_prefix') }}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div class="form-group row mb-2">
-                    <label for="add_dest_addr_prefix" class="col-sm-6 label">Add Destination Address Prefix</label>
-                    <div class="col-sm-6">
-                      <input type="text" class="form-control" id="add_dest_addr_prefix" formControlName="add_dest_addr_prefix"
-                        [class.is-invalid]="validInput('add_dest_addr_prefix')">
-                      <span class="text-danger mt-2" *ngIf="validInput('add_dest_addr_prefix')">
-                        the field is required
-                      </span>
-                      <span class="text-danger mt-2" *ngIf="validPattern('add_dest_addr_prefix')">
-                        {{ getPatternMessage('add_dest_addr_prefix') }}
-                      </span>
-                    </div>
-                  </div>
-            
-                  <div class="form-group row mb-2">
-                    <label for="new_dest_addr_ton" class="col-sm-6 label">New Destination Address TON</label>
-                    <div class="col-sm-6">
-                      <select class="form-select" id="new_dest_addr_ton" formControlName="new_dest_addr_ton">
-                        @for (item of newDestAddrTonList; track $index) {
-                        <option value="{{ item.id }}">{{ item.description }}</option>
-                        }
-                      </select>
-                      <span class="text-danger mt-2" *ngIf="validInput('new_dest_addr_ton')">
-                        the field is required
-                      </span>
-                    </div>
-                  </div>
-            
-                  <div class="form-group row mb-2">
-                    <label for="new_dest_addr_npi" class="col-sm-6 label">New Destination Address NPI</label>
-                    <div class="col-sm-6">
-                      <select class="form-select" id="new_dest_addr_npi" formControlName="new_dest_addr_npi">
-                        @for (item of newDestAddrNpiList; track $index) {
-                        <option value="{{ item.id }}">{{ item.description }}</option>
-                        }
-                      </select>
-                      <span class="text-danger mt-2" *ngIf="validInput('new_dest_addr_npi')">
-                        the field is required
-                      </span>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="col-sm-4">
-
                   <div class="form-group row mb-2">
                     <label for="new_gt_sccp_addr_mt" class="col-sm-6 label">New GT SCCP Address for MT</label>
                     <div class="col-sm-6">
@@ -337,7 +366,7 @@
                       </span>
                     </div>
                   </div>
-        
+
                   <div class="form-group row mb-2">
                     <label for="drop_map_sri" class="col-sm-6 label">Drop after get MAP SRI Response</label>
                     <div class="col-sm-6">
@@ -416,13 +445,12 @@
                       </span>
                     </div>
                   </div>
-
                 </div>
               </div>
-
             </div>
           </div>
         </div>
+
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingThree">
             <button class="accordion-button custom-accordion-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"

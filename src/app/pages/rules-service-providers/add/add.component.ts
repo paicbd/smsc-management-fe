@@ -104,7 +104,9 @@ export class AddComponent implements OnInit {
       drop_temp_failure: [false, []],
       network_id_temp_failure: ['', []],
       check_sri_response: [false, []],
-      is_sri_response: [false, []]
+      is_sri_response: [false, []],
+      regex_short_message: ['', []],
+      new_short_message: ['', []]
     });
   }
 
@@ -153,7 +155,9 @@ export class AddComponent implements OnInit {
         drop_temp_failure: (data.drop_temp_failure == null || data.drop_temp_failure == undefined) ? false : data.drop_temp_failure,
         network_id_temp_failure: (data.network_id_temp_failure == null || data.network_id_temp_failure == undefined) ? '' : data.network_id_temp_failure,
         check_sri_response: (data.check_sri_response == null || data.check_sri_response == undefined) ? false : data.check_sri_response,
-        is_sri_response: (data.is_sri_response == null || data.is_sri_response == undefined) ? false : data.is_sri_response
+        is_sri_response: (data.is_sri_response == null || data.is_sri_response == undefined) ? false : data.is_sri_response,
+        regex_short_message: (data.regex_short_message == null || data.regex_short_message == undefined) ? '' : data.regex_short_message,
+        new_short_message: (data.new_short_message == null || data.new_short_message == undefined) ? '' : data.new_short_message
       });
 
       if (data.drop_temp_failure == true && data.network_id_temp_failure != null && data.network_id_temp_failure != undefined) {
