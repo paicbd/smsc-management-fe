@@ -1,0 +1,13 @@
+<div class="form-group row mb-2">
+  <label [class]="labelCol + ' label'">
+    {{ label }}
+  </label>
+
+  <div [class]="inputCol">
+    <input
+      type="checkbox"
+      class="form-check-input check_form"
+      [formControl]="control"
+    />
+  </div>
+</div>

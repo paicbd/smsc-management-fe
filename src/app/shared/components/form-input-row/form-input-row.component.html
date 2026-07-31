@@ -1,0 +1,36 @@
+<div class="form-group row mb-2">
+  <label [for]="elementId" [class]="labelCol + ' label'">
+    {{ label }}
+  </label>
+
+  <div [class]="inputCol">
+    <input
+      [type]="type"
+      class="form-control"
+      [id]="elementId"
+      [formControl]="control"
+      [readOnly]="readonly"
+      [class.is-invalid]="(control.touched && control.invalid) || hasGroupError"
+    />
+
+    <span class="text-danger mt-2" *ngIf="showRequired && hasError('required')">
+      the field is required
+    </span>
+
+    <span class="text-danger mt-2" *ngIf="showMin && hasError('min')">
+      Min: {{ minValue }}
+    </span>
+
+    <span class="text-danger mt-2" *ngIf="showMax && hasError('max')">
+      Max: {{ maxValue }}
+    </span>
+
+    <span class="text-danger mt-2" *ngIf="showPattern && hasError('pattern')">
+      {{ patternMessage }}
+    </span>
+
+    <span class="text-danger mt-2 d-block" *ngIf="groupErrorMessage && hasGroupError">
+      {{ groupErrorMessage }}
+    </span>
+  </div>
+</div>

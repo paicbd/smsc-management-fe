@@ -1,0 +1,51 @@
+<h5
+  class="fw-bold border-bottom pb-1 mb-3"
+  [class.mt-3]="config.topMargin !== false">
+  {{ config.title }}
+</h5>
+
+<div class="row" [formGroup]="form">
+  <div class="col-md-6" *ngFor="let column of config.columns">
+    <ng-container *ngFor="let field of column">
+      <ng-container *ngIf="isVisible(field)">
+        <app-form-input-row
+          *ngIf="isInputField(field)"
+          [form]="form"
+          [controlName]="field.controlName"
+          [label]="field.label"
+          [type]="getInputType(field)"
+          [id]="field.id"
+          [labelCol]="field.labelCol || 'col-sm-4'"
+          [inputCol]="field.inputCol || 'col-sm-8'"
+          [readonly]="field.readonly || false"
+          [groupErrorKey]="field.groupErrorKey || ''"
+          [groupErrorFields]="field.groupErrorFields || []"
+          [groupErrorMessage]="field.groupErrorMessage || ''">
+        </app-form-input-row>
+
+        <app-form-select-row
+          *ngIf="isSelectField(field)"
+          [form]="form"
+          [controlName]="field.controlName"
+          [label]="field.label"
+          [options]="field.options || []"
+          [id]="field.id"
+          [labelCol]="field.labelCol || 'col-sm-4'"
+          [inputCol]="field.inputCol || 'col-sm-8'">
+        </app-form-select-row>
+
+        <ng-container *ngIf="isCheckboxField(field)">
+          <div class="pb-3">
+            <app-form-checkbox-row
+              [form]="form"
+              [controlName]="field.controlName"
+              [label]="field.label"
+              [labelCol]="field.labelCol || 'col-sm-6'"
+              [inputCol]="field.inputCol || 'col-sm-6'">
+            </app-form-checkbox-row>
+          </div>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

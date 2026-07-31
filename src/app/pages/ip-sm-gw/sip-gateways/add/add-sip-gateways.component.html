@@ -1,0 +1,95 @@
+<div class="content-wrapper ps-2 pe-2">
+  <div class="container-fluid flex-grow-1 container-p-y">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center mt-3">
+        <img src="/assets/img/base-station-icon-1.png" alt="icon" height="40px" width="auto" />
+
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item mt-4 not-bredcrumb">
+              <a
+                class="card-header title-content mb-0 ml-2"
+                style="font-size: 20px; font-weight: 500; color: #1d609d"
+                [routerLink]="sipBasePath">
+                SIP Gateways
+              </a>
+            </li>
+
+            <li
+              class="breadcrumb-item active"
+              style="margin-top: 22px; color: #7b3031; font-size: 18px"
+              aria-current="page">
+              <label class="mt-1">General</label>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <br />
+
+    <form [formGroup]="form" (ngSubmit)="save()" class="row g-3 d-flex justify-content-center">
+      <div class="col-12 mb-2">
+        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+          <h5 class="fw-bold">SIP Gateways</h5>
+
+          <button class="btn btn-red" [disabled]="form.invalid" type="submit" *ngIf="!isEdit">
+            Save Changes
+          </button>
+
+          <button
+            class="btn btn-red"
+            [disabled]="form.invalid || disabled || !isModified"
+            type="submit"
+            *ngIf="isEdit">
+            Update Changes
+          </button>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <app-form-section
+          [form]="form"
+          [config]="generalSection">
+        </app-form-section>
+
+        <app-sip-gateway-routing-section
+          [form]="form"
+          [ss7Gateways]="ss7Gateways"
+          [ss7AllowedUssi]="ss7AllowedUssi"
+          [diameterGateways]="diameterGateways">
+        </app-sip-gateway-routing-section>
+
+        <app-form-section
+          [form]="form"
+          [config]="timersSection">
+        </app-form-section>
+
+        <app-form-section
+          [form]="form"
+          [config]="performanceSection">
+        </app-form-section>
+
+        <app-form-section
+          [form]="form"
+          [config]="retriesSection">
+        </app-form-section>
+
+        <app-form-section
+          [form]="form"
+          [config]="subscribeSection">
+        </app-form-section>
+
+        <app-form-section
+          [form]="form"
+          [config]="ipsmgwSection">
+        </app-form-section>
+
+        <app-form-section
+          [form]="form"
+          [config]="imsSection">
+        </app-form-section>
+      </div>
+    </form>
+  </div>
+</div>

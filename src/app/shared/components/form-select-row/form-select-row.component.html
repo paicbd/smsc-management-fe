@@ -1,0 +1,16 @@
+<div class="form-group row mb-2">
+  <label [for]="elementId" [class]="labelCol + ' label'">
+    {{ label }}
+  </label>
+
+  <div [class]="inputCol">
+    <select
+      class="form-select"
+      [id]="elementId"
+      [formControl]="control">
+      <option *ngFor="let option of options" [ngValue]="option.value">
+        {{ option.label }}
+      </option>
+    </select>
+  </div>
+</div>

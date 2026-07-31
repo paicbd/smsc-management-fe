@@ -1,0 +1,54 @@
+<h5 class="fw-bold border-bottom pb-1 mb-3 mt-3">Registration Routing</h5>
+
+<div class="row" [formGroup]="form">
+  <div class="col-md-6">
+    <app-form-checkbox-row
+      [form]="form"
+      controlName="routing_enable_ss7"
+      label="Enable SS7"
+      labelCol="col-sm-6"
+      inputCol="col-sm-6">
+    </app-form-checkbox-row>
+
+    <ng-container *ngIf="ss7Enabled">
+      <app-form-select-row
+        [form]="form"
+        controlName="routing_registration_traffic_ss7_gateway_id"
+        label="Registration Traffic (SS7 Gateway)"
+        labelCol="col-sm-6"
+        inputCol="col-sm-6"
+        [options]="ss7RegistrationOptions">
+      </app-form-select-row>
+
+      <app-form-select-row
+        [form]="form"
+        controlName="routing_ussi_traffic_ss7_gateway_id"
+        label="USSI Traffic (SS7 Gateway)"
+        labelCol="col-sm-6"
+        inputCol="col-sm-6"
+        [options]="ss7UssiOptions">
+      </app-form-select-row>
+    </ng-container>
+  </div>
+
+  <div class="col-md-6">
+    <app-form-checkbox-row
+      [form]="form"
+      controlName="routing_enable_diameter"
+      label="Enable Diameter"
+      labelCol="col-sm-6"
+      inputCol="col-sm-6">
+    </app-form-checkbox-row>
+
+    <ng-container *ngIf="diameterEnabled">
+      <app-form-select-row
+        [form]="form"
+        controlName="routing_registration_traffic_diameter_gateway_id"
+        label="Registration Traffic (Diameter Gateway)"
+        labelCol="col-sm-6"
+        inputCol="col-sm-6"
+        [options]="diameterRegistrationOptions">
+      </app-form-select-row>
+    </ng-container>
+  </div>
+</div>
